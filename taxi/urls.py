@@ -30,11 +30,9 @@ urlpatterns = [
         ManufacturerCreateView.as_view(),
         name="manufacturer-create",
     ),
-    path(
-        "manufacturers/<int:pk>/update/",
+    path("manufacturers/<int:pk>/update/",
         ManufacturerUpdateView.as_view(),
-        name="manufacturer-update",
-    ),
+        name="manufacturer-update",),
     path(
         "manufacturers/<int:pk>/delete/",
         ManufacturerDeleteView.as_view(),
@@ -52,8 +50,12 @@ urlpatterns = [
     path(
         "drivers/<int:pk>/", DriverDetailView.as_view(), name="driver-detail"
     ),
-    path('car/<int:pk>/add-driver/', AddDriverToCarView.as_view(), name='car-add-driver'),
-    path('car/<int:pk>/remove-driver/', RemoveDriverFromCarView.as_view(), name='car-remove-driver'),
+    path("car/<int:pk>/add-driver/",
+         AddDriverToCarView.as_view(),
+         name="car-add-driver"),
+    path("car/<int:pk>/remove-driver/",
+         RemoveDriverFromCarView.as_view(),
+         name="car-remove-driver"),
 ]
 
 app_name = "taxi"
