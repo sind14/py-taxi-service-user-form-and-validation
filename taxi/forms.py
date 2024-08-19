@@ -32,8 +32,6 @@ class DriverForm(DriverLicenseUpdateForm):
         fields = "__all__"
 
 
-
-
 class CarForm(forms.ModelForm):
     drivers = forms.ModelMultipleChoiceField(
         queryset=get_user_model().objects.all(),
