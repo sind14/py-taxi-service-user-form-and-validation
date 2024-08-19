@@ -26,25 +26,12 @@ class DriverLicenseUpdateForm(forms.ModelForm):
         return license_number
 
 
-class DriverForm(forms.ModelForm):
+class DriverForm(DriverLicenseUpdateForm):
     class Meta:
         model = Driver
         fields = "__all__"
 
-    def clean_license_number(self):
-        license_number = self.cleaned_data["license_number"]
-        if len(license_number) != 8:
-            raise ValidationError("License_number must be 8 characters long")
-        if (not license_number[:3].isupper()
-                or not license_number[:3].isalpha()):
-            raise ValidationError(
-                "Invalid license number: First 3 char. are uppercase letters"
-            )
-        if not license_number[3:].isdigit():
-            raise ValidationError(
-                "Invalid license number: Last 5 char. are digits"
-            )
-        return license_number
+
 
 
 class CarForm(forms.ModelForm):
